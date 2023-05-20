@@ -27,14 +27,15 @@ async function run() {
     const DisneyToyCollection = client.db("toyDB").collection("allToy");
 
 
-
-    app.post("/toy", async (req, res) => {
+    //insertion of toy data
+    app.post('/toys', async (req, res) => {
       const newToy = req.body;
       console.log(newToy);
-      console.log("done");
-      const result = await toyCollection.insertOne(newToy);
+      const result = await toysCollection.insertOne(newToy);
       res.send(result);
-    });
+    })
+
+
     app.get("/toy", async (req, res) => {
       const cursor = toyCollection.find();
       const result = await cursor.toArray();
